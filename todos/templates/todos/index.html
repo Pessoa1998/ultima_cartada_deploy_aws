@@ -1,0 +1,100 @@
+{% extends 'todos/base.html' %}
+
+{% block title %}
+<title>GERENCIADOR DE DEMANDAS</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <!-- Título -->
+  <div class="row">
+    <div class="offset-md-2 col-lg-9">
+      <div class="page-header">
+        <h1>
+          ORGANIZE SUAS ATIVIDADES AQUI!
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Adicionar uma atividade -->
+  <div class="row">
+    <div class="offset-md-2 col-lg-9">
+      <form method="post" action="{% url 'todos:add' %}">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="title" placeholder="Digite o nome da atividade aqui." required>
+          </div>
+          <div class="col-md-6">
+            <!-- Alinhar botões lado a lado -->
+            <div class="button-container">
+              <button type="submit" name="submit" class="btn btn-outline-primary mb-2">
+                ADICIONAR ATIVIDADE
+              </button>
+              <button type="button" class="btn btn-outline-success mb-2" onclick="window.location.href='{% url 'todos:todos_export' %}'">
+                EXPORTAR DADOS
+              </button>
+              <button type="button" class="btn btn-outline-info mb-2" onclick="showInstructions();">
+                INSTRUÇÕES PARA MANUSEIO
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr />
+
+  <!-- Lista de atividades -->
+  <div class="row">
+    <div class="offset-md-2 col-lg-6">
+      <div class="list-group">
+        {% for todo in todo_list %}
+        <div class="list-group-item {% if todo.isCompleted %} todo-complete {% endif %}">
+          <form style="display: inline;" method="post" action="{% url 'todos:update' todo.id %}">
+            {% csrf_token %}
+            <input type="checkbox" name="isCompleted" onchange="this.form.submit()" {% if todo.isCompleted %} checked {% endif %}
+              class="todo-status-checkbox"
+              title="{% if not todo.isCompleted %} marcar como concluído {% else %} desmarcar {% endif %}">
+          </form>
+          {{ todo.title }}
+          <a href="{% url 'todos:delete' todo.id %}" title="Excluir">
+            <i class="far fa-trash-alt"></i>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pop-up de Instruções -->
+<div id="instructions-popup" style="display:none; position:fixed; top:20%; left:50%; transform:translate(-50%, -50%); background-color:white; border:1px solid #ccc; padding:20px; z-index:1000;">
+  <h3>Instruções para Manuseio</h3>
+  <ol>
+    <li>✏️ Digite o nome da sua atividade na caixa de texto sublinhada onde está escrito "Digite o nome da atividade aqui."</li>
+    <li>➕ Clique no botão "Adicionar Atividade" para inserir sua atividade no banco de dados.</li>
+    <li>🗑️ Para excluir uma atividade, clique no ícone da lixeira ao lado dela.</li>
+    <li>✅ Para marcar uma atividade como concluída, clique na caixa de seleção ao lado dela. Isso riscará a atividade, mostrando que ela foi realizada.</li>
+  </ol>
+  <button onclick="closeInstructions();">Fechar</button>
+</div>
+
+<script>
+  function showInstructions() {
+    document.getElementById("instructions-popup").style.display = "block";
+  }
+
+  function closeInstructions() {
+    document.getElementById("instructions-popup").style.display = "none";
+  }
+</script>
+
+<!-- Rodapé -->
+<footer class="text-center mt-4">
+  <p>Feito com ❤️ por Gabriel Pessoa & Lucas Origa</p>
+</footer>
+
+{% endblock %}

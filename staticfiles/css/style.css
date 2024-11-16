@@ -1,0 +1,152 @@
+/* .page-header {
+  margin-top: 30px;
+}
+
+.fa-trash-alt {
+  color: red;
+  float: right;
+  cursor: pointer;
+}
+
+.todo-complete {
+  text-decoration: line-through;
+}
+
+.todo-status-checkbox {
+  cursor: pointer;
+  margin-right: 10px;
+} */
+
+
+/*Dedo de ajuste dos boões*/
+
+/* Adicionar espaçamento e centralização para o popup */
+/* #instructions-popup {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+} */
+
+/* Ajuste de margem entre botões no modo responsivo */
+/* @media (max-width: 768px) {
+  .form-row .btn { */
+    /* width: 100%; Os botões ocupam 100% da largura em telas menores
+    margin-bottom: 10px;
+  }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.page-header {
+  margin-top: 30px;
+}
+
+.fa-trash-alt {
+  color: red;
+  float: right;
+  cursor: pointer;
+}
+
+.todo-complete {
+  text-decoration: line-through;
+}
+
+.todo-status-checkbox {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Estilo para o contêiner de botões */
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Espaçar botões igualmente */
+  flex-wrap: wrap; /* Permitir que os botões quebrem linha, se necessário */
+}
+
+/* Ajustar o espaçamento dos botões em telas menores */
+.button-container .btn {
+  flex: 1;
+  margin: 5px;
+}
+
+/* Estilização do popup de instruções */
+#instructions-popup {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste de margem entre botões no modo responsivo */
+@media (max-width: 768px) {
+  .button-container .btn {
+    width: 100%; /* Os botões ocupam 100% da largura em telas menores */
+    margin-bottom: 10px;
+  }
+}
