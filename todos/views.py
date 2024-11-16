@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Todo
 from django.http import HttpResponseRedirect
-import xlsxwriter
 import openpyxl
 
 import csv
